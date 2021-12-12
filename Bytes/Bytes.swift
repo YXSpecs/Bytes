@@ -9,22 +9,24 @@ import Foundation
 
 public struct Byte {
     
-    var bytes: Data {
+    public var bytes: Data {
         return data as Data
     }
     
     private let data = NSMutableData()
     
-    func append(value: Data) {
+    public init() {}
+    
+    public func append(value: Data) {
         data.append(value)
     }
     
-    func append(value: ByteConvertible) {
+    public func append(value: ByteConvertible) {
         var bytes = value
         data.append(&bytes, length: MemoryLayout.size(ofValue: value))
     }
 
-    func append(value: ByteConvertible, length: Len) {
+    public func append(value: ByteConvertible, length: Len) {
         var bytes = value
         data.append(&bytes, length: length.rawValue)
     }
